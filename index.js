@@ -28,3 +28,26 @@ function unterschiedlicheWörterZählen(text) {
   const unterschiedlicheWörter = new Set(wörter);
   return unterschiedlicheWörter.size;
 }
+
+
+//Ohne Chat GPT alleine nicht machbar gewesen.
+const wortFrequenz = wortFrequenzZählen(wörter);
+console.log(`Wortfrequenz: ${wortFrequenz}`);
+
+function wortFrequenzZählen(wörter) {
+    const wortFrequenz = {};
+    wörter.forEach(function (wort) {
+      if (wort in wortFrequenz) {
+        wortFrequenz[wort]++;
+      } else {
+        wortFrequenz[wort] = 1;
+      }
+    });
+  
+    // Formatierung für die Ausgabe
+    const frequenzAusgabe = Object.entries(wortFrequenz)
+      .map(([wort, anzahl]) => `${wort}: ${anzahl}`)
+      .join(", ");
+  
+    return `{ ${frequenzAusgabe} }`;
+  }
